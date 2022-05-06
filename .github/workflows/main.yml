@@ -43,9 +43,9 @@ jobs:
       - run: |
           set -x
           docker version
-          container_id=$(docker create heticdocker/hetic-model:e4e8ed6)
+          container_id=$(docker create heticdocker/hetic-model:82e487b)
           docker cp "$container_id:/data/model.json" .
-          echo "Extracting model version e4e8ed6"
+          echo "Extracting model version 82e487b"
           pwd
           ls -l .
       ############ PYTHON #############

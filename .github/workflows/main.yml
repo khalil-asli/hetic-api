@@ -4,8 +4,7 @@ on:
   # run it on push to the default repository branch
   push:
     branches: [main, cicd]
-  # run it during pull request
-  pull_request:
+  repository_dispatch:
 
 jobs:
   # define job to build and publish docker image
@@ -38,6 +37,7 @@ jobs:
         run: echo ${{ steps.vars.outputs.sha_short }}
 
       ############# MODEL ###############
+
       - uses: docker-practice/actions-setup-docker@master
       - run: |
           set -x
@@ -48,7 +48,6 @@ jobs:
           echo "Extracting model version $model_commit_id"
           pwd
           ls -l .
-
       ########### DOCKER ##################
       
       - name: Build image and push to Docker Hub and GitHub Container Registry
